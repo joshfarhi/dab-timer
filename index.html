@@ -7,6 +7,35 @@
     <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
+<div class="countdown">
+    <div class="countdown-item">
+        <span id="minutes"></span>
+        <span>Minutes</span>
+    </div>
+    <div class="countdown-item">
+        <span id="seconds"></span>
+        <span>Seconds</span>
+    </div>
+    <div class="countdown-item">
+        <span id="milliseconds"></span>
+        <span>Milliseconds</span>
+    </div>
+</div>
+<div class="timer-controls">
+    <select id="duration-select">
+        <option value="30">30 Seconds</option>
+        <option value="40">40 Seconds</option>
+        <option value="60">1 Minute</option>
+    </select>
+    <button id="start-button">Start</button>
+</div>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Countdown Completed</h2>
+        <p>Take the dab lol</p>
+    </div>
+</div>
     <script type="text/javascript" src="app.js"></script>
 </body>
 </html>
