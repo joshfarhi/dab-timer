@@ -3,44 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Countdown Timer</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
-    <div class="container">
-        <h1>Countdown Timer</h1>
-        <div class="countdown">
-            <div class="countdown-item">
-                <span id="minutes" class="countdown-number">00</span>
-                <span class="countdown-label">Minutes</span>
-            </div>
-            <div class="countdown-item">
-                <span id="seconds" class="countdown-number">00</span>
-                <span class="countdown-label">Seconds</span>
-            </div>
-            <div class="countdown-item">
-                <span id="milliseconds" class="countdown-number">000</span>
-                <span class="countdown-label">Milliseconds</span>
-            </div>
-        </div>
-        <div class="timer-controls">
-            <select id="duration-select">
-                <option value="30">30 Seconds</option>
-                <option value="40">40 Seconds</option>
-                <option value="1">1 Minute</option>
-                <option value="2">2 Minutes</option>
-                <!-- Add more options as needed -->
-            </select>
-            <button id="start-button">Start</button>
-            <button id="stop-reset-button">Stop</button>
-        </div>
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <p>Timer Completed!</p>
-            </div>
-        </div>
+<div class="container">
+<div class="countdown">
+    <div class="countdown-item">
+        <span id="minutes" class="countdown-number"></span>
+        <span class="countdown-label">Minutes</span>
     </div>
+    <div class="countdown-item">
+        <span id="seconds" class="countdown-number"></span>
+        <span class="countdown-label">Seconds</span>
+    </div>
+    <div class="countdown-item">
+        <span id="milliseconds" class="countdown-number"></span>
+        <span class="countdown-label">Milliseconds</span>
+    </div>
+</div>
+<div class="timer-controls">
+    <select id="duration-select">
+        <option value="30">30 Seconds</option>
+        <option value="40">40 Seconds</option>
+        <option value="60">1 Minute</option>
+    </select>
+    <button id="start-button">Start</button>
+    <button id="stop-reset-button">Stop/Reset</button>
+</div>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Countdown Completed</h2>
+        <p>Take the dab lol</p>
+    </div>
+</div>
+</div>
     <script src="app.js"></script>
 </body>
 </html>

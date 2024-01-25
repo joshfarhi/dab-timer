@@ -34,16 +34,7 @@ function updateCountdown() {
 
 startButton.addEventListener("click", () => {
     clearInterval(countdownInterval);
-    const selectedDuration = parseInt(targetDurationElement.value);
-
-    if (selectedDuration >= 1) {
-        // For durations of 1 minute or more, set the target time in milliseconds
-        targetDuration = selectedDuration * 60000;
-    } else {
-        // For durations less than 1 minute, set the target time in milliseconds and seconds
-        targetDuration = selectedDuration * 1000;
-    }
-
+    targetDuration = (parseInt(targetDurationElement.value) * 1000) + new Date().getTime(); // Set the target time
     updateCountdown();
     countdownInterval = setInterval(updateCountdown, 10); // Update every 10 milliseconds for milliseconds display
     stopResetButton.textContent = "Stop"; // Change button text to "Stop"
@@ -77,15 +68,9 @@ window.addEventListener("click", (event) => {
 
 // Update the countdown numbers when a time is selected from the dropdown
 targetDurationElement.addEventListener("change", () => {
-    const selectedDuration = parseInt(targetDurationElement.value);
-    // Set the selected duration into the countdown numbers
-    if (selectedDuration >= 1) {
-        minutesElement.textContent = selectedDuration.toString().padStart(2, '0');
-        secondsElement.textContent = "00";
-        millisecondsElement.textContent = "000";
-    } else {
-        minutesElement.textContent = "00";
-        secondsElement.textContent = selectedDuration.toString().padStart(2, '0');
-        millisecondsElement.textContent = "000";
-    }
+    const selectedTime = parseInt(targetDurationElement.value);
+    // Set the selected time into the countdown numbers
+    minutesElement.textContent = selectedTime.toString().padStart(2, '0');
+    secondsElement.textContent = "00";
+    millisecondsElement.textContent = "000";
 });
