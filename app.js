@@ -1,5 +1,6 @@
 const targetDurationElement = document.getElementById("duration-select");
 const startButton = document.getElementById("start-button");
+const stopResetButton = document.getElementById("stop-reset-button");
 const modal = document.getElementById("myModal");
 const closeBtn = document.getElementsByClassName("close")[0];
 
@@ -14,6 +15,7 @@ function updateCountdown() {
         clearInterval(countdownInterval);
         // Display the modal
         modal.style.display = "block";
+        stopResetButton.textContent = "Reset"; // Change button text to "Reset"
     } else {
         // Calculate minutes, seconds, and milliseconds
         const minutes = Math.floor(timeDifference / (1000 * 60));
@@ -32,6 +34,21 @@ startButton.addEventListener("click", () => {
     targetDuration = (parseInt(targetDurationElement.value) * 1000) + new Date().getTime(); // Set the target time
     updateCountdown();
     countdownInterval = setInterval(updateCountdown, 10); // Update every 10 milliseconds for milliseconds display
+    stopResetButton.textContent = "Stop"; // Change button text to "Stop"
+});
+
+stopResetButton.addEventListener("click", () => {
+    if (stopResetButton.textContent === "Stop") {
+        clearInterval(countdownInterval);
+        stopResetButton.textContent = "Reset"; // Change button text to "Reset"
+    } else {
+        targetDuration = 0; // Reset the target duration
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+        document.getElementById("milliseconds").textContent = "000";
+        stopResetButton.textContent = "Stop"; // Change button text back to "Stop"
+        modal.style.display = "none"; // Close the modal if it's open
+    }
 });
 
 // Close the modal when the "x" button is clicked
