@@ -6,6 +6,8 @@ const closeBtn = document.getElementsByClassName("close")[0];
 
 let countdownInterval;
 let targetDuration = 0; // Initialize target duration
+let spacebarAction = 0; // 0: Start, 1: Stop, 2: Reset
+let spacebarPressCount = 0; // Count of spacebar presses
 
 // Function to update the countdown timer preview
 function updateCountdownPreview() {
@@ -29,6 +31,7 @@ function updateCountdown() {
         // Display the modal
         modal.style.display = "block";
         stopResetButton.textContent = "Reset"; // Change button text to "Reset"
+        spacebarAction = 2; // Set spacebar action to Reset
     } else {
         // Calculate seconds
         const seconds = Math.floor(timeDifference / 1000);
@@ -39,24 +42,39 @@ function updateCountdown() {
 }
 
 startButton.addEventListener("click", () => {
+    startCountdown();
+});
+
+function startCountdown() {
     clearInterval(countdownInterval);
     targetDuration = (parseInt(targetDurationElement.value) * 1000) + new Date().getTime(); // Set the target time
     updateCountdown();
     countdownInterval = setInterval(updateCountdown, 1000); // Update every second
     stopResetButton.textContent = "Stop"; // Change button text to "Stop"
-});
+    spacebarAction = 1; // Set spacebar action to Stop
+}
 
 stopResetButton.addEventListener("click", () => {
     if (stopResetButton.textContent === "Stop") {
-        clearInterval(countdownInterval);
-        stopResetButton.textContent = "Reset"; // Change button text to "Reset"
+        stopCountdown();
     } else {
-        targetDuration = 0; // Reset the target duration
-        document.getElementById("seconds").textContent = "00";
-        stopResetButton.textContent = "Stop"; // Change button text back to "Stop"
-        modal.style.display = "none"; // Close the modal if it's open
+        resetCountdown();
     }
 });
+
+function stopCountdown() {
+    clearInterval(countdownInterval);
+    stopResetButton.textContent = "Reset"; // Change button text to "Reset"
+    spacebarAction = 2; // Set spacebar action to Reset
+}
+
+function resetCountdown() {
+    targetDuration = 0; // Reset the target duration
+    document.getElementById("seconds").textContent = "00";
+    stopResetButton.textContent = "Stop"; // Change button text back to "Stop"
+    modal.style.display = "none"; // Close the modal if it's open
+    spacebarAction = 0; // Set spacebar action to Start
+}
 
 // Close the modal when the "x" button is clicked
 closeBtn.addEventListener("click", () => {
@@ -71,5 +89,21 @@ window.addEventListener("click", (event) => {
 });
 
 targetDurationElement.addEventListener("change", () => {
-    // ... (the rest of your code remains the same)
+    updateCountdownPreview();
+});
+
+// Event listener for spacebar key press
+document.addEventListener("keydown", (event) => {
+    if (event.code === "Space") {
+        if (spacebarAction === 0) {
+            startCountdown();
+            spacebarPressCount++;
+        } else if (spacebarAction === 1) {
+            stopCountdown();
+            spacebarPressCount++;
+        } else if (spacebarAction === 2 && spacebarPressCount >= 2) {
+            resetCountdown();
+            spacebarPressCount = 0;
+        }
+    }
 });
