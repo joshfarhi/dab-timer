@@ -7,38 +7,30 @@
     <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
-<div class="container">
-<div class="countdown">
-    <div class="countdown-item">
-        <span id="minutes" class="countdown-number"></span>
-        <span>Minutes</span>
+    <div class="container">
+        <div class="countdown">
+            <div class="countdown-item">
+                <span id="seconds" class="countdown-number">00</span>
+                <span>Seconds</span>
+            </div>
+        </div>
+        <div class="timer-controls">
+            <select id="duration-select" onchange="updateCountdownPreview()">
+                <option value="30">30 Seconds</option>
+                <option value="40">40 Seconds</option>
+                <option value="60">1 Minute</option>
+            </select>
+            <button id="start-button">Start</button>
+            <button id="stop-reset-button">Stop/Reset</button>
+        </div>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Countdown Completed</h2>
+                <p>Take the dab lol</p>
+            </div>
+        </div>
     </div>
-    <div class="countdown-item">
-        <span id="seconds" class="countdown-number"></span>
-        <span>Seconds</span>
-    </div>
-    <div class="countdown-item">
-        <span id="milliseconds" class="countdown-number"></span>
-        <span>Milliseconds</span>
-    </div>
-</div>
-<div class="timer-controls">
-    <select id="duration-select">
-        <option value="30">30 Seconds</option>
-        <option value="40">40 Seconds</option>
-        <option value="60">1 Minute</option>
-    </select>
-    <button id="start-button">Start</button>
-    <button id="stop-reset-button">Stop/Reset</button>
-</div>
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Countdown Completed</h2>
-        <p>Take the dab lol</p>
-    </div>
-</div>
-</div>
     <script src="app.js"></script>
 </body>
 </html>
