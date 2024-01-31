@@ -85,36 +85,3 @@ select, button {
     font-size: 24px;
     cursor: pointer;
 }
-
-
-.title-text{
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    font-size: 20vh;
-    font-weight: 800;
-    letter-spacing: -.025em;
-    position: absolute;
-    top: 1vh;
-    text-align: center;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    background:url('https://img.freepik.com/free-vector/watercolor-pastel-color-background_52683-83920.jpg?w=996&t=st=1706233161~exp=1706233761~hmac=d720164595d20de7d839e0d3c9d62f97ede204dbc489419a07789cd61c3af045');
-     background-size: auto 200%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shine 8s linear infinite;
-    &:nth-child(2) {
-      top: 16vh;
-    }
-    @keyframes shine {
-      from {
-        background-position: center 0;
-      }
-      to {
-        background-position: center 200%;
-      }
-    }
-  }
-  

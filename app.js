@@ -28,6 +28,10 @@ function updateCountdown() {
 
     if (timeDifference <= 0) {
         clearInterval(countdownInterval);
+
+        // Change the background color to pastel green
+        document.body.style.backgroundColor = "#98FB98"; // You can use any pastel green color code
+        
         // Display the modal
         modal.style.display = "block";
         stopResetButton.textContent = "Reset"; // Change button text to "Reset"
