@@ -138,3 +138,23 @@ function hideModal() {
     modal.style.display = "none";
     overlay.style.display = "none";
 }
+
+// Update the count displayed on the page
+function updateCount() {
+    countElement.textContent = count;
+}
+
+// Increment the count when the "Dab" button is clicked
+incrementButton.addEventListener("click", () => {
+    count++;
+    updateCount();
+});
+
+// Reset the count to zero when the "Reset" button is clicked
+resetButton.addEventListener("click", () => {
+    count = 0;
+    updateCount();
+});
+
+// Initial count update for the Dab Counter
+updateCount();

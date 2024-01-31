@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
-
+    <div id="overlay" class="overlay"></div>
 <div class="header">
 </div>
 <div class="timer-container">
@@ -24,8 +24,8 @@
             <option value="40">40 Seconds</option>
             <option value="60">1 Minute</option>
         </select>
-        <button id="start-button">Start</button>
-        <button id="stop-reset-button">Stop</button>
+        <button class="custom-btn btn-15" id="start-button">Start</button>
+        <button class="custom-btn btn-16" id="stop-reset-button">Stop</button>
     </div>
     <div id="myModal" class="modal">
         <div class="modal-content">
@@ -34,8 +34,16 @@
             <p>Take the dab lol</p>
         </div>
     </div>
-    <div id="overlay" class="overlay"></div>
+    <div class="dab-counter">
+        <h1>Dab Counter</h1>
+        <div class="counter">
+            <span id="count">0</span>
+        </div>
+        <button id="increment-btn">Dab</button>
+        <button id="reset-btn">Reset</button>
+    </div>
 </div>
+
 <script src="app.js"></script>
 </body>
 </html>
