@@ -2,6 +2,7 @@ const targetDurationElement = document.getElementById("duration-select");
 const startButton = document.getElementById("start-button");
 const stopResetButton = document.getElementById("stop-reset-button");
 const modal = document.getElementById("myModal");
+const overlay = document.getElementById("overlay");
 const closeBtn = document.getElementsByClassName("close")[0];
 
 let countdownInterval;
@@ -31,9 +32,10 @@ function updateCountdown() {
 
         // Change the background color to pastel green
         document.body.style.backgroundColor = "#98FB98"; // You can use any pastel green color code
-        
-        // Display the modal
-        modal.style.display = "block";
+
+        // Show the modal and overlay
+        showModalRelativeToTimer();
+
         stopResetButton.textContent = "Reset"; // Change button text to "Reset"
         spacebarAction = 2; // Set spacebar action to Reset
     } else {
@@ -76,19 +78,22 @@ function resetCountdown() {
     targetDuration = 0; // Reset the target duration
     document.getElementById("seconds").textContent = "00";
     stopResetButton.textContent = "Stop"; // Change button text back to "Stop"
-    modal.style.display = "none"; // Close the modal if it's open
+    hideModal(); // Hide the modal and overlay
     spacebarAction = 0; // Set spacebar action to Start
+
+    // Change the background color back to its original color
+    document.body.style.backgroundColor = "#0d1b2a"; // Replace with your original background color
 }
 
 // Close the modal when the "x" button is clicked
 closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
+    hideModal();
 });
 
 // Close the modal if the user clicks outside of it
 window.addEventListener("click", (event) => {
-    if (event.target == modal) {
-        modal.style.display = "none";
+    if (event.target == overlay) {
+        hideModal();
     }
 });
 
@@ -111,3 +116,25 @@ document.addEventListener("keydown", (event) => {
         }
     }
 });
+
+// Function to show the modal and overlay relative to the timer container
+function showModalRelativeToTimer() {
+    const timerContainer = document.querySelector(".timer-container");
+    const timerRect = timerContainer.getBoundingClientRect();
+
+    // Calculate the position of the modal relative to the timer container
+    const modalTop = timerRect.top + timerRect.height / 2;
+    const modalLeft = timerRect.left + timerRect.width / 2;
+
+    modal.style.top = `${modalTop}px`;
+    modal.style.left = `${modalLeft}px`;
+
+    modal.style.display = "block";
+    overlay.style.display = "block";
+}
+
+// Function to hide the modal and overlay
+function hideModal() {
+    modal.style.display = "none";
+    overlay.style.display = "none";
+}
